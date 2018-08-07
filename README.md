@@ -3,7 +3,7 @@
 
 ## Voir mon code:
 ```
-$ git clone 
+$ git clone https://github.com/Gwekkeo/premier-site-gem-devise.git
 ```
 ```
 $ cd secret-app
