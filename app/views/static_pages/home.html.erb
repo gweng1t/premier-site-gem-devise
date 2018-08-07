@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<% if !user_signed_in? %>
+			<h1>Connecte toi bon sang !</h1>
+			<%= link_to "Se login", new_user_session_path, class: "btn btn-lg btn-primary" %>
+			<%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-lg btn-primary"%>
+		<% else %>
+			<h1>Ah [...] en faite ya rien à voir sur une page d'accueil</h1>
+			<h2>A par les personnes déjà inscrite:</h2>
+			<ul>
+				<% @tab_users.each do |user| %>
+					<li> <%= user.email %> </li>
+				<% end %>
+			</ul>
+		<% end %>
+
+	</div>
+
+	<h1> <a href="/gossips">Create Gossips</a> </h1>
+	<% if user_signed_in? %>
+		<h2>GOSSIP:</h2>
+		<% @tab_gossip.each do |gossip| %>
+			<ul>
+				<li> 
+					<%= "#{gossip.user.pseudo} : "%> <strong> <%= gossip.content %> </strong>
+					<% if user_signed_in? && current_user.id == gossip.user_id %>
+						<%= link_to "DELETE", gossip_path(gossip.id), class: "btn btn-xs btn-danger", :method => :delete %>
+					<% end %>
+				</li>
+			</ul>
+		<% end %>
+	<% end %>
+
+</body>
+</html>
