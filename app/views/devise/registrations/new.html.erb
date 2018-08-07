@@ -27,8 +27,13 @@
       </div>
 
 
-        <%= f.label :name, "name test" %> <br />
-        <%= f.password_field :pseudo %>
+        <br>
+        <%= f.label :name, "Enter your pseudo" %> <br />
+        <%= f.text_field :pseudo %>
+
+        <br>
+        <%= f.label :code, "Enter the secret code" %> <br />
+        <%= f.text_field :code %>
 
 
       <div class="actions">
